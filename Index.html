@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Mindful Life QSMH - กิจกรรมการพัฒนาจิตเพื่อคุณภาพชีวิต</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #15803d;
+      --primary-hover: #166534;
+      --bg-pastel: linear-gradient(135deg, #fbcfe8 0%, #e9d5ff 25%, #bae6fd 50%, #bbf7d0 75%, #fef08a 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Sarabun', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 14px;
+      min-height: 100vh;
+      background: var(--bg-pastel);
+      background-size: 400% 400%;
+      animation: gradientBG 18s ease infinite;
+      color: #1f2937;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.96);
+      width: 100%;
+      max-width: 800px;
+      border-radius: 26px;
+      padding: 38px 32px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+      margin-bottom: 40px;
+    }
+
+    .header-banner {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .lotus-icon {
+      width: 76px;
+      height: 76px;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
+    }
+
+    .badge-eng {
+      display: inline-block;
+      background-color: #dcfce7;
+      color: #166534;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 16px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 27px;
+      font-weight: 800;
+      color: #14532d;
+      margin: 6px 0;
+      line-height: 1.4;
+    }
+
+    .sub-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .organizer {
+      font-size: 18px;
+      font-weight: 700;
+      color: #4b5563;
+    }
+
+    /* กล่องรายละเอียดรอบการจัดงาน */
+    .event-info-box {
+      background-color: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: #166534;
+      line-height: 1.6;
+    }
+
+    .tab-container {
+      display: flex;
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 14px;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+      background: #e2e8f0;
+      color: #475569;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(21, 128, 61, 0.35);
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .required::after {
+      content: " *";
+      color: #dc2626;
+    }
+
+    input[type="text"], input[type="email"], select {
+      width: 100%;
+      padding: 15px 18px;
+      font-size: 20px;
+      font-weight: 700;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      background-color: #f8fafc;
+      color: #1e293b;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: #16a34a;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+    }
+
+    .radio-card-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .radio-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: #f1f5f9;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .radio-card input {
+      width: 24px;
+      height: 24px;
+      accent-color: #15803d;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      padding: 18px;
+      font-size: 23px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 15px;
+      box-shadow: 0 4px 14px rgba(21, 128, 61, 0.35);
+      transition: all 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-submit:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* Dashboard */
+    .dashboard-panel {
+      display: none;
+    }
+
+    .count-tag {
+      background: #dcfce7;
+      color: #15803d;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-size: 19px;
+      font-weight: 800;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+
+    .list-wrapper {
+      list-style-type: decimal;
+      padding-left: 36px;
+      max-height: 480px;
+      overflow-y: auto;
+    }
+
+    .list-wrapper li {
+      font-size: 20px;
+      font-weight: 700;
+      padding: 11px 6px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #1e293b;
+    }
+
+    .contact-footer {
+      margin-top: 32px;
+      padding: 20px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #065f46;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header-banner">
+      <svg class="lotus-icon" viewBox="0 0 64 64">
+        <path d="M32 6C32 6 36 20 44 26C52 32 60 36 60 40C60 48 48 56 32 58C16 56 4 48 4 40C4 36 12 32 20 26C28 20 32 6 32 6Z" fill="#86efac"/>
+        <path d="M32 14C32 14 35 24 40 28C46 32 52 35 52 40C52 46 42 52 32 54C22 52 12 46 12 40C12 35 18 32 24 28C29 24 32 14 32 14Z" fill="#22c55e"/>
+        <path d="M32 24C32 24 34 30 38 34C42 38 46 40 46 44C46 48 39 51 32 52C25 51 18 48 18 44C18 40 22 38 26 34C30 30 32 24 32 24Z" fill="#15803d"/>
+      </svg>
+      <div><span class="badge-eng">Mindful Life QSMH</span></div>
+      <h1>กิจกรรมการพัฒนาจิตเพื่อคุณภาพชีวิต</h1>
+      <div class="sub-title">โรงพยาบาลสมเด็จพระบรมราชเทวี ณ ศรีราชา สภากาชาดไทย</div>
+      <div class="organizer">จัดโดย งานกิจกรรมวิชาการและการจัดการความรู้ ฝ่ายวิชาการและวิจัย</div>
+    </div>
+
+    <!-- กล่องแสดงรอบและวันที่จัดงานปัจจุบัน (ดึงจาก Config) -->
+    <div class="event-info-box" id="eventInfoBanner">
+      กำลังดึงข้อมูลรอบกิจกรรม...
+    </div>
+
+    <!-- แท็บสลับหน้า -->
+    <div class="tab-container">
+      <button class="tab-btn active" id="tabRegBtn" onclick="switchTab('reg')">ลงทะเบียน</button>
+      <button class="tab-btn" id="tabDashBtn" onclick="switchTab('dash')">รายชื่อผู้ลงทะเบียน (ก-ฮ)</button>
+    </div>
+
+    <!-- ฟอร์มลงทะเบียน -->
+    <form id="regForm" onsubmit="handleFormSubmit(event)">
+      <div class="form-group">
+        <label class="required" for="fullname">ชื่อ - นามสกุล</label>
+        <input type="text" id="fullname" required placeholder="ตัวอย่าง: นายสมบูรณ์ สุขใจ">
+      </div>
+
+      <div class="form-group">
+        <label class="required">ประเภทบุคลากร</label>
+        <div class="radio-card-group">
+          <label class="radio-card">
+            <input type="radio" name="userType" value="บุคลากร รพ.สมเด็จฯ ณ ศรีราชา" checked onchange="toggleHospitalFields(true)">
+            บุคลากร รพ.สมเด็จฯ ณ ศรีราชา
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="userType" value="บุคลากรภายนอกโรงพยาบาล" onchange="toggleHospitalFields(false)">
+            บุคลากรภายนอกโรงพยาบาล
+          </label>
+        </div>
+      </div>
+
+      <!-- หน่วยงานและตำแหน่ง (สำหรับบุคลากรภายใน) -->
+      <div id="internalHospitalFields">
+        <div class="form-group">
+          <label class="required" for="department">ชื่อฝ่าย / หน่วยงานต้นสังกัด</label>
+          <select id="department" required>
+            <option value="">-- เลือกฝ่าย / หน่วยงาน --</option>
+            <option value="ฝ่ายเวชศาสตร์ฉุกเฉิน">ฝ่ายเวชศาสตร์ฉุกเฉิน</option>
+            <option value="ฝ่ายรังสีวิทยา">ฝ่ายรังสีวิทยา</option>
+            <option value="ฝ่ายศัลยกรรมกระดูกและข้อ">ฝ่ายศัลยกรรมกระดูกและข้อ</option>
+            <option value="ฝ่ายผู้ป่วยนอก">ฝ่ายผู้ป่วยนอก</option>
+            <option value="ฝ่ายสูติ-นรีเวชกรรม">ฝ่ายสูติ-นรีเวชกรรม</option>
+            <option value="ฝ่ายศัลยกรรม">ฝ่ายศัลยกรรม</option>
+            <option value="ฝ่ายอายุรกรรม">ฝ่ายอายุรกรรม</option>
+            <option value="ฝ่ายกุมารเวชกรรม">ฝ่ายกุมารเวชกรรม</option>
+            <option value="ฝ่ายเวชกรรมฟื้นฟู">ฝ่ายเวชกรรมฟื้นฟู</option>
+            <option value="ฝ่ายจักษุ โสต ศอ นาสิก ลาริงซ์">ฝ่ายจักษุ โสต ศอ นาสิก ลาริงซ์</option>
+            <option value="ฝ่ายพยาธิวิทยากายวิภาค">ฝ่ายพยาธิวิทยากายวิภาค</option>
+            <option value="ฝ่ายวิสัญญีวิทยา">ฝ่ายวิสัญญีวิทยา</option>
+            <option value="ฝ่ายจิตเวช">ฝ่ายจิตเวช</option>
+            <option value="ฝ่ายทันตกรรม">ฝ่ายทันตกรรม</option>
+            <option value="ฝ่ายผู้ป่วยสัมพันธ์">ฝ่ายผู้ป่วยสัมพันธ์</option>
+            <option value="ฝ่ายเวชกรรมสังคม">ฝ่ายเวชกรรมสังคม</option>
+            <option value="ฝ่ายบริหารเบิกจ่ายค่าบริการทางการแพทย์">ฝ่ายบริหารเบิกจ่ายค่าบริการทางการแพทย์</option>
+            <option value="ฝ่ายเวชศาสตร์ชันสูตร">ฝ่ายเวชศาสตร์ชันสูตร</option>
+            <option value="ฝ่ายยาและเวชภัณฑ์">ฝ่ายยาและเวชภัณฑ์</option>
+            <option value="ฝ่ายเวชสารสนเทศ">ฝ่ายเวชสารสนเทศ</option>
+            <option value="ฝ่ายเทคโนโลยีสารสนเทศ">ฝ่ายเทคโนโลยีสารสนเทศ</option>
+            <option value="ฝ่ายการเงินการบัญชี">ฝ่ายการเงินการบัญชี</option>
+            <option value="ศูนย์บริหารงานกายภาพอาคารพิเศษ (FMU)">ศูนย์บริหารงานกายภาพอาคารพิเศษ (FMU)</option>
+            <option value="ฝ่ายบริหารงานทั่วไป">ฝ่ายบริหารงานทั่วไป</option>
+            <option value="งานประชาสัมพันธ์">งานประชาสัมพันธ์</option>
+            <option value="ฝ่ายโภชนาการ">ฝ่ายโภชนาการ</option>
+            <option value="ฝ่ายทรัพยากรบุคคล">ฝ่ายทรัพยากรบุคคล</option>
+            <option value="ฝ่ายวิชาการและวิจัย">ฝ่ายวิชาการและวิจัย</option>
+            <option value="ฝ่ายพัฒนาคุณภาพและบริหารความเสี่ยง">ฝ่ายพัฒนาคุณภาพและบริหารความเสี่ยง</option>
+            <option value="ฝ่ายแพทยศาสตรศึกษาชั้นคลินิก">ฝ่ายแพทยศาสตรศึกษาชั้นคลินิก</option>
+            <option value="ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม">ฝ่ายบริหารอาคารสถานที่และสิ่งแวดล้อม</option>
+            <option value="ฝ่ายบริหารงานพัสดุและจัดซื้อ">ฝ่ายบริหารงานพัสดุและจัดซื้อ</option>
+            <option value="ศูนย์เครื่องมือแพทย์">ศูนย์เครื่องมือแพทย์</option>
+            <option value="ศูนย์เวชศาสตร์อุตสาหกรรม">ศูนย์เวชศาสตร์อุตสาหกรรม</option>
+            <option value="ศูนย์บริการสุขภาพสาขาสหพัฒน์">ศูนย์บริการสุขภาพสาขาสหพัฒน์</option>
+            <option value="ศูนย์บริการสุขภาพสาขาบ่อวิน">ศูนย์บริการสุขภาพสาขาบ่อวิน</option>
+            <option value="ศูนย์บริการสุขภาพสาขาแหลมฉบัง">ศูนย์บริการสุขภาพสาขาแหลมฉบัง</option>
+            <option value="ศูนย์บริการสุขภาพสาขาพัทยาเหนือ">ศูนย์บริการสุขภาพสาขาพัทยาเหนือ</option>
+            <option value="ปฏิบัติงานที่ศูนย์บริการสุขภาพสาขา">ปฏิบัติงานที่ศูนย์บริการสุขภาพสาขา</option>
+            <option value="ศูนย์ส่งเสริมฟื้นฟูสุขภาพผู้สูงอายุ (ศูนย์บางพระ)">ศูนย์ส่งเสริมฟื้นฟูสุขภาพผู้สูงอายุ (ศูนย์บางพระ)</option>
+            <option value="ฝ่ายการพยาบาล สำนักงาน-17">ฝ่ายการพยาบาล สำนักงาน-17</option>
+            <option value="งานส่งเสริมสุขภาพและผู้ป่วยสัมพันธ์">งานส่งเสริมสุขภาพและผู้ป่วยสัมพันธ์</option>
+            <option value="หน่วยรับบริจาคโลหิต ชั้น 1 ตึก 100ปี ตึกสว่างวัฒนา">หน่วยรับบริจาคโลหิต ชั้น 1 ตึก 100ปี ตึกสว่างวัฒนา</option>
+            <option value="หน่วยอุบัติเหตุและฉุกเฉิน-1">หน่วยอุบัติเหตุและฉุกเฉิน-1</option>
+            <option value="คลินิกศัลยกรรมกระดูกและข้อ-3">คลินิกศัลยกรรมกระดูกและข้อ-3</option>
+            <option value="คลินิกเวชปฏิบัติทั่วไป 2-4">คลินิกเวชปฏิบัติทั่วไป 2-4</option>
+            <option value="คลินิกประกันสังคม/เวชปฏิบัติทั่วไป 1-4">คลินิกประกันสังคม/เวชปฏิบัติทั่วไป 1-4</option>
+            <option value="คลินิกศัลยกรรม-5">คลินิกศัลยกรรม-5</option>
+            <option value="คลินิกพัฒนาการเด็ก/สุขภาพเด็กดี-5">คลินิกพัฒนาการเด็ก/สุขภาพเด็กดี-5</option>
+            <option value="คลินิกกุมารเวชกรรม-6">คลินิกกุมารเวชกรรม-6</option>
+            <option value="คลินิกสูตินรีเวชกรรม-6">คลินิกสูตินรีเวชกรรม-6</option>
+            <option value="คลินิกอายุรกรรม-6">คลินิกอายุรกรรม-6</option>
+            <option value="คลินิกเบาหวาน ไทยรอยด์ และต่อมไร้ท่อ-7">คลินิกเบาหวาน ไทยรอยด์ และต่อมไร้ท่อ-7</option>
+            <option value="คลินิกมะเร็งวิทยา-7">คลินิกมะเร็งวิทยา-7</option>
+            <option value="คลินิกจักษุกรรม-8">คลินิกจักษุกรรม-8</option>
+            <option value="คลินิก โสต ศอ นาสิก-8">คลินิก โสต ศอ นาสิก-8</option>
+            <option value="หน่วยจ่ายกลาง-10">หน่วยจ่ายกลาง-10</option>
+            <option value="ห้องผ่าตัดเล็กและห้องส่องกล้อง-10">ห้องผ่าตัดเล็กและห้องส่องกล้อง-10</option>
+            <option value="ห้องผ่าตัด-11-12">ห้องผ่าตัด-11-12</option>
+            <option value="หอผู้ป่วยวิกฤตศัลยกรรม/สูตินรีเวชกรรม SICU-11">หอผู้ป่วยวิกฤตศัลยกรรม/สูตินรีเวชกรรม SICU-11</option>
+            <option value="หอผู้ป่วยวิกฤตกุมารเวชกรรม PICU-13">หอผู้ป่วยวิกฤตกุมารเวชกรรม PICU-13</option>
+            <option value="ห้องคลอด-13">ห้องคลอด-13</option>
+            <option value="หน่วยบริบาลทารกแรกเกิด/NICU-13">หน่วยบริบาลทารกแรกเกิด/NICU-13</option>
+            <option value="ศูนย์วินิฉัยโรคหัวใจ-14">ศูนย์วินิฉัยโรคหัวใจ-14</option>
+            <option value="หอผู้ป่วยวิกฤตอายุรกรรม MICU-14">หอผู้ป่วยวิกฤตอายุรกรรม MICU-14</option>
+            <option value="หน่วยไตเทียม-14">หน่วยไตเทียม-14</option>
+            <option value="หอผู้ป่วยแผลไหม้-น้ำร้อนลวก-14">หอผู้ป่วยแผลไหม้-น้ำร้อนลวก-14</option>
+            <option value="หอผู้ป่วยวิกฤตโรคหัวใจและหลอดเลือด-14">หอผู้ป่วยวิกฤตโรคหัวใจและหลอดเลือด-14</option>
+            <option value="หอผู้ป่วยสามัญสูติกรรม-18A">หอผู้ป่วยสามัญสูติกรรม-18A</option>
+            <option value="หอผู้ป่วยสามัญนรีเวชกรรมและศัลยกรรมหญิง-18B">หอผู้ป่วยสามัญนรีเวชกรรมและศัลยกรรมหญิง-18B</option>
+            <option value="หอผู้ป่วยสามัญ EENT-18C">หอผู้ป่วยสามัญ EENT-18C</option>
+            <option value="หอผู้ป่วยสามัญกุมารกรรม-18D">หอผู้ป่วยสามัญกุมารกรรม-18D</option>
+            <option value="หอผู้ป่วยสามัญอายุรกรรมชาย 3-19A">หอผู้ป่วยสามัญอายุรกรรมชาย 3-19A</option>
+            <option value="หอผู้ป่วยสามัญศัลยกรรมกระดูกและข้อชาย-19B">หอผู้ป่วยสามัญศัลยกรรมกระดูกและข้อชาย-19B</option>
+            <option value="หอผู้ป่วยสามัญศัลยกรรม ศัลยกรรมกระดูกและข้อหญิง-19D">หอผู้ป่วยสามัญศัลยกรรม ศัลยกรรมกระดูกและข้อหญิง-19D</option>
+            <option value="หอผู้ป่วยสามัญศัลยกรรมชาย-20C">หอผู้ป่วยสามัญศัลยกรรมชาย-20C</option>
+            <option value="หอผู้ป่วยเคมีบำบัด-21D">หอผู้ป่วยเคมีบำบัด-21D</option>
+            <option value="หอผู้ป่วยสามัญอายุรกรรมหญิง 1-22A">หอผู้ป่วยสามัญอายุรกรรมหญิง 1-22A</option>
+            <option value="หอผู้ป่วยสามัญอายุรกรรมชาย 1-22B">หอผู้ป่วยสามัญอายุรกรรมชาย 1-22B</option>
+            <option value="หอผู้ป่วยสามัญอายุรกรรมชาย 2-22C">หอผู้ป่วยสามัญอายุรกรรมชาย 2-22C</option>
+            <option value="หอผู้ป่วยสามัญอายุรกรรมหญิง 2-22D">หอผู้ป่วยสามัญอายุรกรรมหญิง 2-22D</option>
+            <option value="หอผู้ป่วยพิเศษสูติกรรม-23A">หอผู้ป่วยพิเศษสูติกรรม-23A</option>
+            <option value="หอผู้ป่วยอายุรกรรม-กุมาร ชั้น 24">หอผู้ป่วยอายุรกรรม-กุมาร ชั้น 24</option>
+            <option value="หอผู้ป่วยพิเศษศัลยกรรมกระดูกและข้อ-25A">หอผู้ป่วยพิเศษศัลยกรรมกระดูกและข้อ-25A</option>
+            <option value="หอผู้ป่วยพิเศษศัลยกรรม-25B">หอผู้ป่วยพิเศษศัลยกรรม-25B</option>
+            <option value="หอผู้ป่วย VIP ชั้น 26A">หอผู้ป่วย VIP ชั้น 26A</option>
+            <option value="หอผู้ป่วยพิเศษทั่วไป-26B">หอผู้ป่วยพิเศษทั่วไป-26B</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="required" for="position">ตำแหน่งงาน</label>
+          <select id="position" required>
+            <option value="">-- เลือกตำแหน่งงาน --</option>
+            <option value="ผู้อำนวยการ">ผู้อำนวยการ</option>
+            <option value="รองผู้อำนวยการ">รองผู้อำนวยการ</option>
+            <option value="ผู้ช่วยผู้อำนวยการ">ผู้ช่วยผู้อำนวยการ</option>
+            <option value="นายแพทย์">นายแพทย์</option>
+            <option value="แพทย์ประจำบ้าน มีต้นสังกัด">แพทย์ประจำบ้าน มีต้นสังกัด</option>
+            <option value="นายแพทย์ (แพทย์พี่เลี้ยง) ก">นายแพทย์ (แพทย์พี่เลี้ยง) ก</option>
+            <option value="นายแพทย์ (แพทย์พี่เลี้ยง) ข">นายแพทย์ (แพทย์พี่เลี้ยง) ข</option>
+            <option value="นายแพทย์ (ใช้ทุน)">นายแพทย์ (ใช้ทุน)</option>
+            <option value="นายแพทย์(เพิ่มพูนทักษะ)">นายแพทย์(เพิ่มพูนทักษะ)</option>
+            <option value="หัวหน้าพยาบาล">หัวหน้าพยาบาล</option>
+            <option value="ผู้ช่วยหัวหน้าพยาบาล">ผู้ช่วยหัวหน้าพยาบาล</option>
+            <option value="ผู้ตรวจการพยาบาล">ผู้ตรวจการพยาบาล</option>
+            <option value="หัวหน้าหอผู้ป่วย">หัวหน้าหอผู้ป่วย</option>
+            <option value="หัวหน้าฝ่าย">หัวหน้าฝ่าย</option>
+            <option value="หัวหน้าศูนย์เครื่องมือแพทย์">หัวหน้าศูนย์เครื่องมือแพทย์</option>
+            <option value="หัวหน้ากลุ่มงานพยาบาลวิสัญญี">หัวหน้ากลุ่มงานพยาบาลวิสัญญี</option>
+            <option value="หัวหน้างานบริหารความเสี่ยง">หัวหน้างานบริหารความเสี่ยง</option>
+            <option value="หัวหน้างานพัฒนาคุณภาพ">หัวหน้างานพัฒนาคุณภาพ</option>
+            <option value="หัวหน้างาน">หัวหน้างาน</option>
+            <option value="หัวหน้าแม่บ้าน">หัวหน้าแม่บ้าน</option>
+            <option value="ผู้จัดการศูนย์บริหารงานกายภาพอาคารพิเศษ">ผู้จัดการศูนย์บริหารงานกายภาพอาคารพิเศษ</option>
+            <option value="ผู้ช่วยผู้จัดการศูนย์บริหารงานกายภาพอาคารพิเศษ">ผู้ช่วยผู้จัดการศูนย์บริหารงานกายภาพอาคารพิเศษ</option>
+            <option value="ทันตแพทย์">ทันตแพทย์</option>
+            <option value="ทันตแพทย์ (ใช้ทุน)">ทันตแพทย์ (ใช้ทุน)</option>
+            <option value="ทันตสาธารณสุข">ทันตสาธารณสุข</option>
+            <option value="เภสัชกร">เภสัชกร</option>
+            <option value="เภสัชกร (ใช้ทุน)">เภสัชกร (ใช้ทุน)</option>
+            <option value="พยาบาล">พยาบาล</option>
+            <option value="แพทย์แผนไทย">แพทย์แผนไทย</option>
+            <option value="แพทย์แผนจีน">แพทย์แผนจีน</option>
+            <option value="นักเทคโนโลยีหัวใจและทรวงอก">นักเทคโนโลยีหัวใจและทรวงอก</option>
+            <option value="นักเทคนิคการแพทย์">นักเทคนิคการแพทย์</option>
+            <option value="นักโภชนาการ">นักโภชนาการ</option>
+            <option value="นักกายภาพบำบัด">นักกายภาพบำบัด</option>
+            <option value="นักจิตวิทยา">นักจิตวิทยา</option>
+            <option value="นักนันทนาการ">นักนันทนาการ</option>
+            <option value="นักปฏิบัติการฉุกเฉินการแพทย์">นักปฏิบัติการฉุกเฉินการแพทย์</option>
+            <option value="นักรังสีการแพทย์">นักรังสีการแพทย์</option>
+            <option value="นักวิชาการศึกษา">นักวิชาการศึกษา</option>
+            <option value="นักวิทยาศาสตร์การแพทย์">นักวิทยาศาสตร์การแพทย์</option>
+            <option value="นักสังคมสงเคราะห์">นักสังคมสงเคราะห์</option>
+            <option value="นักอรรถบำบัด">นักอรรถบำบัด</option>
+            <option value="นักอาชีวอนามัย">นักอาชีวอนามัย</option>
+            <option value="นิติกร">นิติกร</option>
+            <option value="วิทยาจารย์">วิทยาจารย์</option>
+            <option value="วิศวกร">วิศวกร</option>
+            <option value="บรรณารักษ์">บรรณารักษ์</option>
+            <option value="บุคลากร">บุคลากร</option>
+            <option value="เจ้าหน้าที่เวชศาสตร์ฟื้นฟู">เจ้าหน้าที่เวชศาสตร์ฟื้นฟู</option>
+            <option value="เจ้าหน้าที่โสตทัศนศึกษา">เจ้าหน้าที่โสตทัศนศึกษา</option>
+            <option value="เจ้าหน้าที่การเงินและบัญชี">เจ้าหน้าที่การเงินและบัญชี</option>
+            <option value="เจ้าหน้าที่ธุรการ">เจ้าหน้าที่ธุรการ</option>
+            <option value="เจ้าหน้าที่บริหารงานทั่วไป">เจ้าหน้าที่บริหารงานทั่วไป</option>
+            <option value="เจ้าหน้าที่บันทึกข้อมูล">เจ้าหน้าที่บันทึกข้อมูล</option>
+            <option value="เจ้าหน้าที่บันทึกข้อมูลและจัดจ่ายเวชภัณฑ์">เจ้าหน้าที่บันทึกข้อมูลและจัดจ่ายเวชภัณฑ์</option>
+            <option value="เจ้าหน้าที่ประชาสัมพันธ์">เจ้าหน้าที่ประชาสัมพันธ์</option>
+            <option value="เจ้าหน้าที่พยาบาล">เจ้าหน้าที่พยาบาล</option>
+            <option value="เจ้าหน้าที่พัสดุ">เจ้าหน้าที่พัสดุ</option>
+            <option value="เจ้าหน้าที่ระบบงานคอมพิวเตอร์">เจ้าหน้าที่ระบบงานคอมพิวเตอร์</option>
+            <option value="เจ้าหน้าที่วิเคราะห์นโยบายและแผน">เจ้าหน้าที่วิเคราะห์นโยบายและแผน</option>
+            <option value="เจ้าหน้าที่วิเทศสัมพันธ์">เจ้าหน้าที่วิเทศสัมพันธ์</option>
+            <option value="เจ้าหน้าที่วิทยาศาสตร์การแพทย์">เจ้าหน้าที่วิทยาศาสตร์การแพทย์</option>
+            <option value="เจ้าหน้าที่สถิติ">เจ้าหน้าที่สถิติ</option>
+            <option value="เจ้าหน้าที่ห้องปฏิบัติการ">เจ้าหน้าที่ห้องปฏิบัติการ</option>
+            <option value="เจ้าหน้าที่ห้องสมุด">เจ้าหน้าที่ห้องสมุด</option>
+            <option value="นายช่างเครื่องกล">นายช่างเครื่องกล</option>
+            <option value="นายช่างเทคนิค">นายช่างเทคนิค</option>
+            <option value="นายช่างเวชภัณฑ์">นายช่างเวชภัณฑ์</option>
+            <option value="นายช่างโยธา">นายช่างโยธา</option>
+            <option value="นายช่างไฟฟ้า">นายช่างไฟฟ้า</option>
+            <option value="นายช่างศิลป์">นายช่างศิลป์</option>
+            <option value="ช่าง">ช่าง</option>
+            <option value="ผู้ช่วยเภสัชกร">ผู้ช่วยเภสัชกร</option>
+            <option value="ผู้ช่วยแพทย์แผนไทย">ผู้ช่วยแพทย์แผนไทย</option>
+            <option value="ผู้ช่วยทันตแพทย์">ผู้ช่วยทันตแพทย์</option>
+            <option value="ผู้ช่วยนักโภชนาการ">ผู้ช่วยนักโภชนาการ</option>
+            <option value="ผู้ช่วยพยาบาล">ผู้ช่วยพยาบาล</option>
+            <option value="ผู้ดูแลผู้สูงอายุ">ผู้ดูแลผู้สูงอายุ</option>
+            <option value="พนักงานเปล">พนักงานเปล</option>
+            <option value="พนักงานขับรถ">พนักงานขับรถ</option>
+            <option value="พนักงานขับรถไฟฟ้า">พนักงานขับรถไฟฟ้า</option>
+            <option value="พนักงานครัว">พนักงานครัว</option>
+            <option value="พนักงานฉุกเฉินการแพทย์">พนักงานฉุกเฉินการแพทย์</option>
+            <option value="พนักงานซักรีด">พนักงานซักรีด</option>
+            <option value="พนักงานตัดเย็บผ้า">พนักงานตัดเย็บผ้า</option>
+            <option value="พนักงานนำส่งยาและเวชภัณฑ์ (Messenger)">พนักงานนำส่งยาและเวชภัณฑ์ (Messenger)</option>
+            <option value="พนักงานบริการผู้วายชนม์">พนักงานบริการผู้วายชนม์</option>
+            <option value="พนักงานประกอบอาหาร">พนักงานประกอบอาหาร</option>
+            <option value="พนักงานรักษาความปลอดภัย">พนักงานรักษาความปลอดภัย</option>
+            <option value="พนักงานห้องปฏิบัติการ">พนักงานห้องปฏิบัติการ</option>
+            <option value="คนงานตึกผู้ป่วย">คนงานตึกผู้ป่วย</option>
+            <option value="คนงานทั่วไป">คนงานทั่วไป</option>
+            <option value="คนสวน">คนสวน</option>
+            <option value="แม่บ้าน">แม่บ้าน</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="required" for="phone">เบอร์โทรศัพท์ (ที่ติดต่อได้สะดวก)</label>
+        <input type="text" id="phone" required placeholder="เช่น 0812345678" pattern="[0-9]{9,10}">
+      </div>
+
+      <div class="form-group">
+        <label class="required" for="email">อีเมล (สำหรับรับเอกสารยืนยัน)</label>
+        <input type="email" id="email" required placeholder="example@email.com">
+      </div>
+
+      <button type="submit" class="btn-submit" id="btnSubmit">ยืนยันการลงทะเบียน</button>
+    </form>
+
+    <!-- หน้าต่าง Dashboard แสดงเฉพาะชื่อ-นามสกุล เรียง ก-ฮ -->
+    <div id="dashboardSection" class="dashboard-panel">
+      <div class="count-tag" id="totalCount">กำลังโหลดรายชื่อ...</div>
+      <ol class="list-wrapper" id="nameList"></ol>
+    </div>
+
+    <!-- ข้อมูลติดต่อท้ายหน้า -->
+    <div class="contact-footer">
+      📍 <b>ติดต่อสอบถามข้อมูลเพิ่มเติมได้ที่:</b><br>
+      งานกิจกรรมวิชาการและการจัดการความรู้ ฝ่ายวิชาการและวิจัย<br>
+      ชั้น 4 อาคารอนุสรณ์ ๑๐๐ ปี โรงพยาบาลสมเด็จพระบรมราชเทวี ณ ศรีราชา สภากาชาดไทย<br>
+      📞 <b>เบอร์โทรศัพท์:</b> 038-320-200 ต่อ 23458
+    </div>
+  </div>
+
+  <script>
+    // สลับการแสดงผลตัวเลือกหน่วยงาน/ตำแหน่ง
+    function toggleHospitalFields(isInternal) {
+      const panel = document.getElementById('internalHospitalFields');
+      const dept = document.getElementById('department');
+      const pos = document.getElementById('position');
+      
+      if (isInternal) {
+        panel.style.display = 'block';
+        dept.required = true;
+        pos.required = true;
+      } else {
+        panel.style.display = 'none';
+        dept.required = false;
+        pos.required = false;
+        dept.value = '';
+        pos.value = '';
+      }
+    }
+
+    // สลับแท็บหน้า
+    function switchTab(tab) {
+      const regForm = document.getElementById('regForm');
+      const dash = document.getElementById('dashboardSection');
+      const tabRegBtn = document.getElementById('tabRegBtn');
+      const tabDashBtn = document.getElementById('tabDashBtn');
+
+      if (tab === 'reg') {
+        regForm.style.display = 'block';
+        dash.style.display = 'none';
+        tabRegBtn.classList.add('active');
+        tabDashBtn.classList.remove('active');
+      } else {
+        regForm.style.display = 'none';
+        dash.style.display = 'block';
+        tabRegBtn.classList.remove('active');
+        tabDashBtn.classList.add('active');
+        loadDashboardData();
+      }
+    }
+
+    // ดึงค่า Config มาแสดงผลเมื่อเปิดเว็บ
+    window.addEventListener('load', function() {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(config) {
+            const banner = document.getElementById('eventInfoBanner');
+            const btn = document.getElementById('btnSubmit');
+            
+            banner.innerHTML = `🌟 <b>รอบที่เปิดรับสมัคร:</b> ${config.Active_Batch}<br>` +
+                               `📅 <b>วันที่จัด:</b> ${config.Event_Date} | ⏰ <b>เวลา:</b> ${config.Event_Time}<br>` +
+                               `👥 <b>จำนวนผู้สมัครปัจจุบัน:</b> ${config.Current_Count} / ${config.Max_Quota} ท่าน`;
+
+            if (String(config.Is_Open).toUpperCase() !== 'YES') {
+              btn.disabled = true;
+              btn.innerText = 'ระบบปิดรับสมัครสำหรับรอบนี้แล้ว';
+            } else if (Number(config.Current_Count) >= Number(config.Max_Quota)) {
+              btn.disabled = true;
+              btn.innerText = 'ขออภัย จำนวนผู้สมัครรอบนี้เต็มแล้ว';
+            }
+          })
+          .getEventConfig();
+      } else {
+        document.getElementById('eventInfoBanner').innerHTML = '🌟 <b>รอบที่เปิดรับสมัคร:</b> รุ่นที่ 1 (โหมดทดสอบ)<br>📅 <b>วันที่จัด:</b> วันศุกร์ที่ 27 มีนาคม 2570';
+      }
+    });
+
+    // บันทึกฟอร์มลงทะเบียน
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSubmit');
+      btn.disabled = true;
+      btn.innerText = 'กำลังประมวลผลและส่งอีเมล...';
+
+      const data = {
+        fullname: document.getElementById('fullname').value.trim(),
+        userType: document.querySelector('input[name="userType"]:checked').value,
+        department: document.getElementById('department').value,
+        position: document.getElementById('position').value,
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim()
+      };
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(response) {
+            btn.disabled = false;
+            btn.innerText = 'ยืนยันการลงทะเบียน';
+            if (response.success) {
+              alert('ลงทะเบียนสำเร็จแล้ว!\nระบบได้ส่งรายละเอียดไปยังอีเมล: ' + data.email + ' เรียบร้อยแล้ว');
+              document.getElementById('regForm').reset();
+              toggleHospitalFields(true);
+              location.reload();
+            } else {
+              alert('แจ้งเตือน: ' + response.message);
+            }
+          })
+          .withFailureHandler(function(err) {
+            btn.disabled = false;
+            btn.innerText = 'ยืนยันการลงทะเบียน';
+            alert('เกิดข้อผิดพลาดในการเชื่อมต่อ: ' + err);
+          })
+          .submitRegistration(data);
+      } else {
+        setTimeout(function() {
+          btn.disabled = false;
+          btn.innerText = 'ยืนยันการลงทะเบียน';
+          alert('จำลองการลงทะเบียนสำเร็จ! (สำหรับทดสอบใน GitHub)');
+        }, 800);
+      }
+    }
+
+    // โหลดรายชื่อผู้ลงทะเบียนรอบปัจจุบัน
+    function loadDashboardData() {
+      const listEl = document.getElementById('nameList');
+      const countEl = document.getElementById('totalCount');
+      listEl.innerHTML = '<li style="list-style: none;">กำลังดึงข้อมูล...</li>';
+
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(res) {
+            countEl.innerText = `ผู้ลงทะเบียน ${res.batch} (${res.date}) ทั้งหมด: ${res.list.length} ท่าน`;
+            listEl.innerHTML = '';
+            if (res.list.length === 0) {
+              listEl.innerHTML = '<li style="list-style: none;">ยังไม่มีผู้ลงทะเบียนในรอบนี้</li>';
+              return;
+            }
+            res.list.forEach(function(name) {
+              const li = document.createElement('li');
+              li.textContent = name;
+              listEl.appendChild(li);
+            });
+          })
+          .getRegisteredList();
+      } else {
+        const mockNames = ['กฤษณา สุขสม', 'ชลธิชา มั่นคง', 'สมชาย วิจัยดี'];
+        countEl.innerText = 'ผู้ลงทะเบียนทั้งหมด: ' + mockNames.length + ' ท่าน (Mock Test)';
+        listEl.innerHTML = '';
+        mockNames.forEach(function(name) {
+          const li = document.createElement('li');
+          li.textContent = name;
+          listEl.appendChild(li);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
