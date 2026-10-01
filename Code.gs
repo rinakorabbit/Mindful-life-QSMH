@@ -1,5 +1,5 @@
 /**
- * โครงการกิจกรรมการพัฒนาจิตเพื่อคุณภาพชีวิต (Mindful Life QSMH)
+ * Mindful Life QSMH - ระบบลงทะเบียนกิจกรรมการพัฒนาจิตเพื่อคุณภาพชีวิต
  * งานกิจกรรมวิชาการและการจัดการความรู้ ฝ่ายวิชาการและวิจัย
  * โรงพยาบาลสมเด็จพระบรมราชเทวี ณ ศรีราชา สภากาชาดไทย
  */
@@ -12,7 +12,7 @@ function doGet(e) {
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
-// แผ่นงานบันทึกข้อมูล
+// 1. เรียก/สร้างแผ่นงาน Registrations สำหรับบันทึกข้อมูล
 function getSheet() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName('Registrations');
@@ -33,7 +33,7 @@ function getSheet() {
   return sheet;
 }
 
-// แผ่นงานตั้งค่ารอบกิจกรรม (Config)
+// 2. เรียก/สร้างแผ่นงาน Config สำหรับบริหารจัดการรอบจัดงาน (2 ครั้ง/ปี)
 function getEventConfig() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let cfgSheet = ss.getSheetByName('Config');
@@ -73,7 +73,7 @@ function getEventConfig() {
   return config;
 }
 
-// บันทึกข้อมูลการลงทะเบียน
+// 3. ฟังก์ชันบันทึกข้อมูลการลงทะเบียน
 function submitRegistration(data) {
   try {
     const config = getEventConfig();
@@ -107,7 +107,7 @@ function submitRegistration(data) {
   }
 }
 
-// ส่งอีเมลยืนยันผลการลงทะเบียน
+// 4. ส่งอีเมลยืนยันผลพร้อมรายละเอียดรอบจัดงาน
 function sendConfirmationEmail(data, config) {
   const subject = `ยืนยันการลงทะเบียน: กิจกรรมการพัฒนาจิตเพื่อคุณภาพชีวิต (${config['Active_Batch']})`;
   const htmlBody = `
@@ -145,7 +145,7 @@ function sendConfirmationEmail(data, config) {
   });
 }
 
-// ดึงรายชื่อเฉพาะรอบปัจจุบัน เรียง ก-ฮ
+// 5. ดึงรายชื่อเฉพาะรอบปัจจุบันเรียงตาม ก-ฮ สำหรับแสดงบน Dashboard
 function getRegisteredList() {
   const config = getEventConfig();
   const sheet = getSheet();
@@ -155,7 +155,6 @@ function getRegisteredList() {
     return { batch: config['Active_Batch'], date: config['Event_Date'], list: [] };
   }
 
-  // Col A = Batch, Col C = Fullname
   const data = sheet.getRange(2, 1, lastRow - 1, 3).getValues();
   const currentBatchNames = data
     .filter(row => String(row[0]).trim() === String(config['Active_Batch']).trim() && String(row[2]).trim() !== '')
